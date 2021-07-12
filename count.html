@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    textarea{
+      width:100%;
+    }
+  </style>
+</head>
+ <body>
+   <form>
+    <span id="show"></span>
+    <br><textarea id="text"></textarea>
+    <br><input type="reset">
+   </form>
+    <script>
+        function check(){
+            var gettext = document.getElementById("text");
+            var getlengh = gettext.value;
+            var getstring = new String(getlengh);
+            var lengh = getstring.length;
+            document.getElementById("show").innerHTML = lengh + "文字";
+        };
+        setInterval("check()",100);
+    </script>
+ </body>
+</html>
