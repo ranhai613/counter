@@ -11,11 +11,9 @@
    </form>
     <script>
         function check(){
-            var gettext = document.getElementById("text");
-            var getlengh = gettext.value;
-            var getstring = new String(getlengh);
-            var lengh = getstring.length;
-            document.getElementById("show").innerHTML = lengh + "文字";
+            var gettext = document.getElementById("text").value;
+            var getstring = new String(gettext).length;
+            document.getElementById("show").innerHTML = getstring + "文字";
         };
         setInterval("check()",100);
     </script>
