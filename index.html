@@ -1,19 +1,56 @@
-<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
 </head>
  <body>
    <form>
-    <span id="show"></span>
+    <span id="show"></span><span id="sitei"></span>
     <br><textarea id="text" cols="150" rows="5"></textarea>
     <br><input type="reset">
    </form>
+    <br><label>
+          <input type="checkbox" id="seigencheck">
+          <span>字数制限</span>
+        </label>
+        <input type="number" id="lengthseigen" value="30" min="1">
+        <span>字</span>
+        <select id="inaiteido">
+          <option value="inai">以内</option>
+          <option value="teido">程度</option>
+        </select>
     <script>
         function check(){
             var gettext = document.getElementById("text").value;
-            var getstring = new String(gettext).length;
+            getstring = new String(gettext).length;
             document.getElementById("show").innerHTML = getstring + "文字";
+            if(seigencheck.checked){
+              var seigenmozisuu=Math.ceil(document.getElementById("lengthseigen").value);
+              if(document.getElementById("inaiteido").value=="inai"){
+                if((seigenmozisuu*0.8)>getstring){
+                  document.getElementById("sitei").innerHTML=", あと"+((seigenmozisuu*0.8)-getstring)+"字";
+                }
+                else if((seigenmozisuu*0.8)<=getstring&&seigenmozisuu>=getstring){
+                  document.getElementById("sitei").innerHTML=", ---OK---"+"MAXまであと"+(seigenmozisuu-getstring)+"字";
+                }
+                else if(seigenmozisuu<getstring){
+                  document.getElementById("sitei").innerHTML=", "+(getstring-seigenmozisuu)+"字オーバー";
+                }
+              }
+              else if(document.getElementById("inaiteido").value=="teido"){
+                if((seigenmozisuu*0.8)>getstring){
+                  document.getElementById("sitei").innerHTML=", あと"+((seigenmozisuu*0.8)-getstring)+"字";
+                }
+                else if((seigenmozisuu*0.8)<=getstring&&(seigenmozisuu*1.2)>=getstring){
+                  document.getElementById("sitei").innerHTML=", ---OK---"+"MAXまであと"+((seigenmozisuu*1.2)-getstring)+"字";
+                }
+                else if((seigenmozisuu*1.2)<getstring){
+                  document.getElementById("sitei").innerHTML=", "+(getstring-(seigenmozisuu*1.2))+"字オーバー";
+                }
+              }
+            }
+            else{
+              document.getElementById("sitei").innerHTML="";
+            }
         };
         setInterval("check()",100);
     </script>
