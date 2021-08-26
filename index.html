@@ -1,8 +1,9 @@
-<html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <title>文字数カウンター</title>
 </head>
  <body>
+  <h1>文字数カウンター</h1>
    <form>
     <span id="show"></span><span id="sitei"></span>
     <br><textarea id="text" cols="150" rows="5"></textarea>
@@ -24,12 +25,12 @@
             getstring = new String(gettext).length;
             document.getElementById("show").innerHTML = getstring + "文字";
             if(seigencheck.checked){
-              var seigenmozisuu=Math.ceil(document.getElementById("lengthseigen").value);
+              var seigenmozisuu=(document.getElementById("lengthseigen").value);
               if(document.getElementById("inaiteido").value=="inai"){
-                if((seigenmozisuu*0.8)>getstring){
-                  document.getElementById("sitei").innerHTML=", あと"+((seigenmozisuu*0.8)-getstring)+"字";
+                if(Math.ceil(seigenmozisuu*0.8)>getstring){
+                  document.getElementById("sitei").innerHTML=", あと"+(Math.ceil(seigenmozisuu*0.8)-getstring)+"字";
                 }
-                else if((seigenmozisuu*0.8)<=getstring&&seigenmozisuu>=getstring){
+                else if(Math.ceil(seigenmozisuu*0.8)<=getstring&&seigenmozisuu>=getstring){
                   document.getElementById("sitei").innerHTML=", ---OK---"+"MAXまであと"+(seigenmozisuu-getstring)+"字";
                 }
                 else if(seigenmozisuu<getstring){
@@ -37,14 +38,14 @@
                 }
               }
               else if(document.getElementById("inaiteido").value=="teido"){
-                if((seigenmozisuu*0.8)>getstring){
-                  document.getElementById("sitei").innerHTML=", あと"+((seigenmozisuu*0.8)-getstring)+"字";
+                if(Math.ceil(seigenmozisuu*0.8)>getstring){
+                  document.getElementById("sitei").innerHTML=", あと"+(Math.ceil(seigenmozisuu*0.8)-getstring)+"字";
                 }
-                else if((seigenmozisuu*0.8)<=getstring&&(seigenmozisuu*1.2)>=getstring){
-                  document.getElementById("sitei").innerHTML=", ---OK---"+"MAXまであと"+((seigenmozisuu*1.2)-getstring)+"字";
+                else if(Math.ceil(seigenmozisuu*0.8)<=getstring&&Math.ceil(seigenmozisuu*1.2)>=getstring){
+                  document.getElementById("sitei").innerHTML=", ---OK---"+"MAXまであと"+(Math.ceil(seigenmozisuu*1.2)-getstring)+"字";
                 }
                 else if((seigenmozisuu*1.2)<getstring){
-                  document.getElementById("sitei").innerHTML=", "+(getstring-(seigenmozisuu*1.2))+"字オーバー";
+                  document.getElementById("sitei").innerHTML=", "+(getstring-Math.ceil(seigenmozisuu*1.2))+"字オーバー";
                 }
               }
             }
