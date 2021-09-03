@@ -6,20 +6,20 @@
  <body>
   <h1>文字数カウンター</h1>
    <form>
-    <span id="show"></span><span id="sitei"></span>
-    <br><textarea id="text" cols="100vw" rows="50vw"></textarea>
-    <br><input type="reset">
-   </form>
     <br><label>
-          <input type="checkbox" id="seigencheck">
-          <span>字数制限</span>
-        </label>
-        <input type="number" id="lengthseigen" value="30" min="1">
-        <span>字</span>
-        <select id="inaiteido">
-          <option value="inai">以内</option>
-          <option value="teido">程度</option>
-        </select>
+      <input type="checkbox" id="seigencheck">
+      <span>字数制限</span>
+    </label>
+    <input type="number" id="lengthseigen" value="30" min="1">
+    <span>字</span>
+    <select id="inaiteido">
+      <option value="inai">以内</option>
+      <option value="teido">程度</option>
+    </select>
+    <br><span id="show"></span><span id="sitei"></span>
+    <br><input type="reset">
+    <br><textarea id="text" cols="100vw" rows="50vw"></textarea>
+   </form>
     <script>
         function check(){
             var gettext = document.getElementById("text").value;
